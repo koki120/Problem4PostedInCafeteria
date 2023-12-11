@@ -13,7 +13,7 @@ object Solver {
         if (filterCondition) THead = char
         filterCondition
       }
-      .map(_._1)
+      .map { case (char, _) => char }
       .mkString
       .reverse
   }

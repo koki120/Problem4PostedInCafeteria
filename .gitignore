@@ -1,0 +1,7 @@
+project/
+/bin/
+target/
+.vscode/
+.metals/
+.bloop/
+scala_text.pdf

@@ -1,17 +1,20 @@
 object Solver {
   def solve(N: Int, S: String): String = {
     val isOdd = N % 2 == 1
-    var head = S(if (isOdd) N - 2 else N - 1)
-    var index = 0
+
+    var THead = S(if (isOdd) N - 2 else N - 1)
 
     S.reverse
       .substring(if (isOdd) 1 else 0)
-      .filter { p =>
-        val filter = if (index % 2 == 0) p >= head else p < head
-        if (filter) head = p
-        index += 1
-        filter
+      .zipWithIndex
+      .filter { case (char, index) =>
+        val filterCondition =
+          if (index % 2 == 0) char >= THead else char < THead
+        if (filterCondition) THead = char
+        filterCondition
       }
+      .map(_._1)
+      .mkString
       .reverse
   }
 

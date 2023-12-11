@@ -7,13 +7,12 @@ object Solver {
     S.reverse
       .substring(if (isOdd) 1 else 0)
       .zipWithIndex
-      .filter { case (char, index) =>
-        val filterCondition =
-          if (index % 2 == 0) char >= THead else char < THead
-        if (filterCondition) THead = char
+      .filter { case (c, i) =>
+        val filterCondition = if (i % 2 == 0) c >= THead else c < THead
+        if (filterCondition) THead = c
         filterCondition
       }
-      .map { case (char, _) => char }
+      .map { case (c, _) => c }
       .mkString
       .reverse
   }
